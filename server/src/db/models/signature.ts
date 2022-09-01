@@ -36,7 +36,7 @@ Signature.init({
     primaryKey: true,
     references: {
       model: User,
-      key: 'id'
+      key: 'username'
     }
   },
   tripId: {
