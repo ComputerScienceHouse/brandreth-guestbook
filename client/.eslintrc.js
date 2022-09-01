@@ -1,21 +1,26 @@
+const path = require("path");
+
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "extends": [ "wesbos/typescript" ],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: [path.join(__dirname, '/tsconfig.json')],
+      },
     },
-    "extends": [
-        "plugin:react/recommended",
-        "standard-with-typescript"
-    ],
-    "overrides": [
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-    }
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  rules: {
+    'linebreak-style': 0,
+    'global-require': 0,
+    'eslint linebreak-style': [0, 'error', 'windows'],
+    'no-console': 2
+  }
 }

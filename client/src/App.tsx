@@ -1,11 +1,10 @@
 import React from 'react';
 
-const App = () => {
-  return (
-    <div>
-      Brandreth Guestbook
-    </div>
-  );
-};
+const App = () => (
+  <div>
+    <i>f</i>
+    Brandreth Guestbook
+  </div>
+);
 
 export default App;
