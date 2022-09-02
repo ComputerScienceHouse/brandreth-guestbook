@@ -1,11 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { OidcProvider, OidcSecure } from '@axa-fr/react-oidc';
 import App from './App';
+import oidcConfig from './oidcConfig';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(
+  <OidcProvider configuration={oidcConfig}>
+    <BrowserRouter>
+      <OidcSecure>
+        <App />
+      </OidcSecure>
+    </BrowserRouter>
+  </OidcProvider>
 );

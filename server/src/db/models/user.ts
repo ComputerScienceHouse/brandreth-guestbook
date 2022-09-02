@@ -1,6 +1,5 @@
 import { Optional, DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config';
-import Signature from './signature';
 
 export enum Role {
   POTTER_STEWARD = 'POTTER_STEWARD',
@@ -8,21 +7,21 @@ export enum Role {
 }
 
 interface UserAttributes {
-  username: string
+  id: string
   name: string
   role?: Role
 }
 
-export interface UserInput extends Optional<UserAttributes, 'username' | 'name'> {}
+export interface UserInput extends Optional<UserAttributes, 'id' | 'name'> {}
 
 export class User extends Model<UserAttributes, UserInput> implements UserAttributes {
-  declare username: string;
+  declare id: string;
   declare name: string;
   declare role?: Role;
 }
 
 User.init({
-  username: {
+  id: {
     type: DataTypes.STRING,
     allowNull: false,
     primaryKey: true
@@ -42,7 +41,5 @@ User.init({
 }, {
   sequelize: sequelizeConnection
 });
-
-User.hasMany(Signature);
 
 export default User;

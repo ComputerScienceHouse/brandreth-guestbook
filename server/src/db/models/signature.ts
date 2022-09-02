@@ -1,7 +1,5 @@
 import { Optional, DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config';
-import Trip from './trip';
-import User from './user';
 
 export enum Status {
   PENDING = 'PENDING',
@@ -10,19 +8,15 @@ export enum Status {
 }
 
 interface SignatureAttributes {
-  userId: string
-  tripId: string
   startDate: Date
   endDate: Date
   status?: Status
   picture?: string
 }
 
-export interface SignatureInput extends Optional<SignatureAttributes, 'userId' | 'tripId' | 'startDate' | 'endDate'> {}
+export interface SignatureInput extends Optional<SignatureAttributes, 'startDate' | 'endDate'> {}
 
 export class Signature extends Model<SignatureAttributes, SignatureInput> implements SignatureAttributes {
-  declare userId: string;
-  declare tripId: string;
   declare startDate: Date;
   declare endDate: Date;
   declare status?: Status;
@@ -30,24 +24,6 @@ export class Signature extends Model<SignatureAttributes, SignatureInput> implem
 }
 
 Signature.init({
-  userId: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    primaryKey: true,
-    references: {
-      model: User,
-      key: 'username'
-    }
-  },
-  tripId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    references: {
-      model: Trip,
-      key: 'id'
-    }
-  },
   startDate: {
     type: DataTypes.DATE,
     allowNull: false
@@ -70,18 +46,6 @@ Signature.init({
   }
 }, {
   sequelize: sequelizeConnection
-});
-
-Signature.belongsTo(User, {
-  foreignKey: 'userId',
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE'
-});
-
-Signature.belongsTo(Trip, {
-  foreignKey: 'tripId',
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE'
 });
 
 export default Signature;

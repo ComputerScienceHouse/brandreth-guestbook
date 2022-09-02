@@ -1,6 +1,5 @@
 import { Optional, DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config';
-import Signature from './signature';
 
 interface TripAttributes {
   id?: number
@@ -12,7 +11,7 @@ interface TripAttributes {
 export interface TripInput extends Optional<TripAttributes, 'startDate' | 'endDate'> {}
 
 export class Trip extends Model<TripAttributes, TripInput> implements TripAttributes {
-  declare id: number;
+  declare id?: number;
   declare startDate: Date;
   declare endDate: Date;
   declare galleryLink?: string;
@@ -39,7 +38,5 @@ Trip.init({
 }, {
   sequelize: sequelizeConnection
 });
-
-Trip.hasMany(Signature);
 
 export default Trip;
