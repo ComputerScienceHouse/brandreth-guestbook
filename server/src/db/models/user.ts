@@ -7,28 +7,33 @@ export enum Role {
 }
 
 interface UserAttributes {
-  id: string
-  name: string
+  username: string
+  name?: string
+  tripCount?: number
   role?: Role
 }
 
-export interface UserInput extends Optional<UserAttributes, 'id' | 'name'> {}
+export interface UserInput extends Optional<UserAttributes, 'username'> {}
 
 export class User extends Model<UserAttributes, UserInput> implements UserAttributes {
-  declare id: string;
+  declare username: string;
   declare name: string;
+  declare tripCount?: number;
   declare role?: Role;
 }
 
 User.init({
-  id: {
+  username: {
     type: DataTypes.STRING,
     allowNull: false,
     primaryKey: true
   },
   name: {
-    type: DataTypes.STRING,
-    allowNull: false
+    type: DataTypes.STRING
+  },
+  tripCount: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
   },
   role: {
     type: DataTypes.ENUM(

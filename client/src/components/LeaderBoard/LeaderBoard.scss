@@ -1,0 +1,95 @@
+.leaderboard {
+  .lb-top-three {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    .lb-score {
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .lb-place {
+        margin: 5px;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+      }
+
+      .lb-trips {
+        margin: 5px;
+        font-size: 25px;
+      }
+    }
+
+
+    .lb-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 20px;
+
+      .lb-img {
+        position: relative;
+        margin-right: 10px;
+
+        .lb-crown {
+          position: absolute;
+          top: -40px;
+          left: -5px;
+          transform: rotate(-20deg);
+          fill: black;
+        }
+      }
+    }
+
+    .lb-1 {
+      color: white;
+      background-color: goldenrod !important;
+    }
+
+    .lb-2 {
+      color: white;
+      background-color: #969696 !important;
+    }
+
+    .lb-3 {
+      color: white;
+      background-color: #cd7f32 !important;
+    }
+
+    .lb-card {
+      margin: 10px;
+    }
+  }
+
+  .lb-user {
+    display: flex;
+    align-items: center;
+
+    .lb-user-img {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .lb-name {
+    display: flex;
+    flex-direction: column;
+
+
+    h5, h2 {
+      margin-bottom: 0;
+    }
+    p {
+      margin: 0;
+      opacity: 70%;
+    }
+  }
+}

@@ -15,7 +15,7 @@ async function log (type: LogType, code: string, message: string, additional: (a
       });
     } catch (error) {
       process.stdout.write(
-        `[ERROR]: Could not add error log (which is ironic since this is the error log), err: ${
+        `[ERROR]: Could not add error log (which is ironic since this is the error log), error: ${
           JSON.stringify(error)
         }`
       );

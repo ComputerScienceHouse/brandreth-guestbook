@@ -11,7 +11,7 @@ interface TripAttributes {
 export interface TripInput extends Optional<TripAttributes, 'startDate' | 'endDate'> {}
 
 export class Trip extends Model<TripAttributes, TripInput> implements TripAttributes {
-  declare id?: number;
+  declare id: number;
   declare startDate: Date;
   declare endDate: Date;
   declare galleryLink?: string;

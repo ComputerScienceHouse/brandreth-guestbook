@@ -18,7 +18,6 @@ export default async function dbInit (): Promise<void> {
 
   if (force) {
     await Signature.drop();
-
     await Trip.drop();
     await User.drop();
     await Log.drop();
