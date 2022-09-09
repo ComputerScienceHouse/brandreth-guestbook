@@ -3,15 +3,17 @@ import sequelizeConnection from '../config';
 
 interface TripAttributes {
   id?: number
+  title: string
   startDate: Date
   endDate: Date
   galleryLink?: string
 }
 
-export interface TripInput extends Optional<TripAttributes, 'startDate' | 'endDate'> {}
+export interface TripInput extends Optional<TripAttributes, 'startDate' | 'endDate' | 'title'> {}
 
 export class Trip extends Model<TripAttributes, TripInput> implements TripAttributes {
   declare id: number;
+  declare title: string;
   declare startDate: Date;
   declare endDate: Date;
   declare galleryLink?: string;
@@ -22,6 +24,10 @@ Trip.init({
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
+  },
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
   startDate: {
     type: DataTypes.DATE,

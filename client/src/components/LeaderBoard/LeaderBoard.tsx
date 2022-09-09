@@ -1,25 +1,13 @@
 import { Card, CardBody, CardTitle, Table } from 'reactstrap';
+import useUsers from '../../hooks/useUsers';
+import { Loading } from '../Loading';
 import CrownSVG from './Crown';
 import './LeaderBoard.scss';
 
 const LeaderBoard = () => {
-  const users = [
-    {
-      name: 'Andrew Potter',
-      username: 'andyp',
-      tripCount: 100,
-    },
-    {
-      name: 'River Marks',
-      username: 'river',
-      tripCount: 99,
-    },
-    {
-      name: 'River Marks',
-      username: 'river3',
-      tripCount: 97,
-    },
-  ];
+  const { users, isLoading } = useUsers();
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="leaderboard">
@@ -84,7 +72,7 @@ const LeaderBoard = () => {
                     <div className="lb-user">
                       <img
                         className="rounded-circle lb-user-img"
-                        src="https://profiles.csh.rit.edu/image/river"
+                        src={`https://profiles.csh.rit.edu/image/${username}`}
                         alt=""
                         aria-hidden
                         width={40}
