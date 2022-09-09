@@ -30,15 +30,17 @@ api.use('/upload', uploadRouter);
 api.use('/user', userRouter);
 app.use('/api', api);
 
-app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist')));
-app.use(express.static(path.join(__dirname, '..', '..', 'client', 'public')));
-app.use('*', (_, res) => {
-  res.sendFile(
-    path.join(__dirname, '..', '..', 'client', 'dist', 'index.html')
-  );
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist')));
+  app.use(express.static(path.join(__dirname, '..', '..', 'client', 'public')));
+  app.use('*', (_, res) => {
+    res.sendFile(
+      path.join(__dirname, '..', '..', 'client', 'dist', 'index.html')
+    );
+  });
+}
 
-const PORT = process.env.APP_PORT ?? 3000;
+const PORT = process.env.APP_PORT ?? 8080;
 
 app.listen(PORT, () => {
   void (async () => {

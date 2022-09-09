@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { SequelizeScopeError } from 'sequelize/types';
 import { Trip, User } from '../db/models';
-import { SignatureInput } from '../db/models/signature';
+import Signature, { SignatureInput } from '../db/models/signature';
 import { TripInput } from '../db/models/trip';
 import { Role } from '../db/models/user';
 import { logger } from '../utils';
@@ -16,12 +16,41 @@ async function verifyIsSteward (member: string): Promise<boolean> {
   return true;
 };
 
-// TODO: Pagination support
-export async function getTrips (_: Request, res: Response): Promise<Response> {
-  try {
-    const trips = await Trip.findAll();
+export async function getTrips (req: Request, res: Response): Promise<Response> {
+  const { offset = 0, limit = 10 } = req.query;
 
-    return res.status(200).send({ data: trips });
+  if (limit > 50 || limit <= 0) {
+    return res.status(400).send({ errors: ['Cannot specify limit must be in the range 1 and 50'] });
+  }
+
+  if (offset < 0) {
+    return res.status(400).send({ errors: ['Cannot specify offset that is less than 0'] });
+  }
+
+  const realLimit = limit >= 10 ? +limit : 10;
+  const realOffset = +offset;
+
+  try {
+    const trips = await Trip.findAll({
+      offset: realOffset,
+      limit: realLimit,
+      include: {
+        model: Signature,
+        as: 'signatures'
+      }
+    });
+    const count = await Trip.count();
+
+    return res.status(200).send({
+      data: trips,
+      meta: {
+        count,
+        page: Math.floor(realOffset / realLimit) + 1,
+        pages: Math.ceil(count / realLimit),
+        offset: realOffset,
+        limit: realLimit
+      }
+    });
   } catch (error) {
     return res.status(200).send({ errors: ['There was a problem getting the trips'] });
   }
@@ -31,7 +60,12 @@ export async function getTrip (req: Request, res: Response): Promise<Response> {
   const { tripId } = req.params;
 
   try {
-    const trip = await Trip.findByPk(tripId);
+    const trip = await Trip.findByPk(tripId, {
+      include: {
+        model: Signature,
+        as: 'signatures'
+      }
+    });
 
     if (trip == null) {
       return res.status(404).send({ error: [`Trip with id ${tripId} was not found`] });
@@ -90,10 +124,21 @@ export async function updateTrip (req: Request, res: Response): Promise<Response
 
 export async function addSignature (req: Request, res: Response): Promise<Response> {
   const { tripId } = req.params;
-  const signature = req.body as SignatureInput;
+  const { member, signature } = req.body as { member: string, signature: SignatureInput };
 
-  console.log(signature);
-  console.log(tripId);
+  try {
+    const createdSignature = await Signature.create({
+      ...signature,
+      UserUsername: member,
+      TripId: +tripId
+    }, {
+      include: [Trip, User]
+    });
 
-  return res.status(201).send({});
+    return res.status(201).send(createdSignature);
+  } catch (error) {
+    void logger.error('ADD_SIGNATURE_FAIL', `Failed to add signature to trip ${tripId}`, error);
+
+    return res.status(500).send({ errors: ['There was a problem signing that trip'] });
+  }
 }

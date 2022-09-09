@@ -13,9 +13,6 @@ export default async function dbInit (): Promise<void> {
   const force = DB_DROP_TABLES === 'true';
   const alter = DEPLOYMENT_ENV !== 'production';
 
-  Trip.hasMany(Signature);
-  User.hasMany(Signature);
-
   if (force) {
     await Signature.drop();
     await Trip.drop();

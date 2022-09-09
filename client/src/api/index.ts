@@ -1,20 +1,22 @@
 interface RequestObject {
   route: string;
-  body?: any;
+  body?: JSON;
 }
 
 // TODO: Get types that can return
 const requestBuilder =
   (method: string) =>
   async ({ route, body = undefined }: RequestObject) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const response = await fetch(`/api${route}`, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      ...(body && { body: JSON.stringify(body) }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_SERVER_DOMAIN ?? ''}/api${route}`,
+      {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        ...(body && { body: JSON.stringify(body) }),
+      }
+    );
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { data, errors } = (await response.json()) as {

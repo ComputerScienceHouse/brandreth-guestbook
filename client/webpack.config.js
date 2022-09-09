@@ -6,6 +6,10 @@ require('dotenv').config()
 
 module.exports = {
   entry: './src/index.tsx',
+  devServer: {
+    port: 3000,
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {

@@ -1,5 +1,6 @@
 import { Optional, DataTypes, Model } from 'sequelize';
 import sequelizeConnection from '../config';
+import Signature from './signature';
 
 export enum Role {
   POTTER_STEWARD = 'POTTER_STEWARD',
@@ -11,6 +12,8 @@ interface UserAttributes {
   name?: string
   tripCount?: number
   role?: Role
+  signatures?: Signature[]
+
 }
 
 export interface UserInput extends Optional<UserAttributes, 'username'> {}
@@ -20,6 +23,7 @@ export class User extends Model<UserAttributes, UserInput> implements UserAttrib
   declare name: string;
   declare tripCount?: number;
   declare role?: Role;
+  declare signatures?: Signature[];
 }
 
 User.init({
@@ -41,7 +45,6 @@ User.init({
       Role.GUEST
     ),
     defaultValue: Role.GUEST
-
   }
 }, {
   sequelize: sequelizeConnection

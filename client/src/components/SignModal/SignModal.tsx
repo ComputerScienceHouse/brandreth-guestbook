@@ -11,6 +11,7 @@ import {
   ModalHeader,
 } from 'reactstrap';
 import { Trip } from '../../api/trip.api';
+import { dateToString } from '../../util/dateToString';
 
 interface SignModalProps {
   trip?: Trip;
@@ -34,8 +35,8 @@ const SignModal = ({ trip, isOpen, setIsOpen }: SignModalProps) => {
   useEffect(() => {
     if (trip) {
       setSignature({
-        startDate: trip.startDate,
-        endDate: trip.endDate,
+        startDate: dateToString(new Date(trip.startDate)),
+        endDate: dateToString(new Date(trip.endDate)),
       });
     } else {
       setSignature({
