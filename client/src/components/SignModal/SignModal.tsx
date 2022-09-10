@@ -10,20 +10,13 @@ import {
   ModalFooter,
   ModalHeader,
 } from 'reactstrap';
-import { Trip } from '../../api/trip.api';
+import { Trip, Signature } from '../../api/trip.api';
 import { dateToString } from '../../util/dateToString';
 
 interface SignModalProps {
   trip?: Trip;
   isOpen: boolean;
   setIsOpen: (newVal: boolean) => void;
-}
-
-// TODO: Move this to a type defs area
-interface Signature {
-  startDate: string;
-  endDate: string;
-  file?: File;
 }
 
 const SignModal = ({ trip, isOpen, setIsOpen }: SignModalProps) => {

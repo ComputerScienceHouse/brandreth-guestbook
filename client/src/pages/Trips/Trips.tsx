@@ -1,5 +1,14 @@
+import AvatarGroup from '@mui/material/AvatarGroup';
+import Avatar from '@mui/material/Avatar';
 import { useState } from 'react';
-import { Button, Card, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import {
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  NavLink,
+} from 'reactstrap';
 import { Trip } from '../../api/trip.api';
 import { Loading } from '../../components/Loading';
 import { SignModal } from '../../components/SignModal';
@@ -15,6 +24,8 @@ const Trips = () => {
     return <Loading />;
   }
 
+  const { current, upcoming, past } = trips;
+
   return (
     <div className="trips">
       <SignModal
@@ -23,8 +34,30 @@ const Trips = () => {
         setIsOpen={setSignModalOpen}
       />
       <h1>Current Trip</h1>
+      {current && (
+        <Card className="trips-trip">
+          <CardBody>
+            <CardTitle tag="h5">{current.title}</CardTitle>
+            <CardSubtitle className="mb-2 text-muted" tag="h6">
+              {`${current.startDate} to ${current.endDate}`}
+            </CardSubtitle>
+            <Button
+              className="trips-trip-signbutton"
+              color="primary"
+              onClick={() => {
+                setSignModalOpen(true);
+                setSelectedTrip(current);
+              }}
+            >
+              Add Signature
+            </Button>
+          </CardBody>
+        </Card>
+      )}
+
+      <h1>Upcoming Trips</h1>
       <div className="trips-container">
-        {trips.map((trip) => {
+        {upcoming.map((trip) => {
           const { id, title, startDate, endDate } = trip;
           const start = new Date(startDate).toLocaleDateString();
           const end = new Date(endDate).toLocaleDateString();
@@ -51,9 +84,54 @@ const Trips = () => {
           );
         })}
       </div>
-
-      <h1>Upcoming Trips</h1>
       <h1>Past Trips</h1>
+      <div className="trips-container">
+        {past.map((trip, index) => {
+          const { id, title, startDate, endDate, galleryLink, signatures } =
+            trip;
+          const start = new Date(startDate).toLocaleDateString();
+          const end = new Date(endDate).toLocaleDateString();
+          const year = new Date(endDate).getFullYear();
+          const previousYear =
+            index > 0 ? new Date(past[index - 1].endDate).getFullYear() : null;
+
+          return (
+            <div>
+              {previousYear !== year && <h2>{year}</h2>}
+              <Card key={id} className="trips-trip">
+                <CardBody>
+                  <CardTitle tag="h2">{title}</CardTitle>
+                  <CardSubtitle className="mb-2 text-muted" tag="h6">
+                    <i>{`${start} to ${end}`}</i>
+                  </CardSubtitle>
+                  <CardBody>
+                    {galleryLink && (
+                      <NavLink active href={galleryLink}>
+                        Gallery Link
+                      </NavLink>
+                    )}
+                  </CardBody>
+                  {signatures?.length ? (
+                    <AvatarGroup total={signatures.length}>
+                      {signatures.slice(0, 3).map(({ UserUsername }) => (
+                        <Avatar
+                          key={UserUsername}
+                          alt="member"
+                          src={`https://profiles.csh.rit.edu/image/${
+                            UserUsername ?? ''
+                          }`}
+                        />
+                      ))}
+                    </AvatarGroup>
+                  ) : (
+                    <p>No one signed the guestbook :(</p>
+                  )}
+                </CardBody>
+              </Card>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

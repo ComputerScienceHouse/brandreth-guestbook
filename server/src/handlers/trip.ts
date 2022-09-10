@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { SequelizeScopeError } from 'sequelize/types';
+import { Op, SequelizeScopeError } from 'sequelize';
 import { Trip, User } from '../db/models';
 import Signature, { SignatureInput } from '../db/models/signature';
 import { TripInput } from '../db/models/trip';
@@ -31,18 +31,54 @@ export async function getTrips (req: Request, res: Response): Promise<Response> 
   const realOffset = +offset;
 
   try {
-    const trips = await Trip.findAll({
-      offset: realOffset,
-      limit: realLimit,
+    const current = await Trip.findOne({
+      where: {
+        startDate: {
+          [Op.lte]: new Date()
+        },
+        endDate: {
+          [Op.gte]: new Date()
+        }
+      },
       include: {
         model: Signature,
         as: 'signatures'
       }
     });
+
+    const upcoming = await Trip.findAll({
+      where: {
+        startDate: {
+          [Op.gt]: new Date()
+        }
+      }
+    });
+
+    const past = await Trip.findAll({
+      where: {
+        endDate: {
+          [Op.lt]: new Date()
+        }
+      },
+      offset: realOffset,
+      limit: realLimit,
+      include: {
+        model: Signature,
+        as: 'signatures'
+      },
+      order: [
+        ['endDate', 'ASC']
+      ]
+    });
+
     const count = await Trip.count();
 
     return res.status(200).send({
-      data: trips,
+      data: {
+        current,
+        past,
+        upcoming
+      },
       meta: {
         count,
         page: Math.floor(realOffset / realLimit) + 1,
@@ -85,6 +121,46 @@ export async function createTrip (req: Request, res: Response): Promise<Response
   try {
     if (!await verifyIsSteward(member)) {
       return res.status(401).send({ errors: ['Only Potter Stewards can create trips'] });
+    }
+
+    // verify that there is no trip occurring during this time
+    const count = await Trip.count({
+      where: {
+        [Op.or]: [
+          {
+            [Op.and]: [
+              {
+                startDate: {
+                  [Op.gte]: trip.startDate
+                }
+              },
+              {
+                endDate: {
+                  [Op.lte]: trip.startDate
+                }
+              }
+            ]
+          },
+          {
+            [Op.and]: [
+              {
+                startDate: {
+                  [Op.lte]: trip.endDate
+                }
+              },
+              {
+                endDate: {
+                  [Op.gte]: trip.endDate
+                }
+              }
+            ]
+          }
+        ]
+      }
+    });
+
+    if (count > 0) {
+      return res.status(400).send({ errors: ['A trip between that date range alrady exists'] });
     }
 
     const newTrip = await Trip.create(trip);
