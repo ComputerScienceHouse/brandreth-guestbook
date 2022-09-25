@@ -86,49 +86,43 @@ const Trips = () => {
       </div>
       <h1>Past Trips</h1>
       <div className="trips-container">
-        {past.map((trip, index) => {
+        {past.map((trip) => {
           const { id, title, startDate, endDate, galleryLink, signatures } =
             trip;
           const start = new Date(startDate).toLocaleDateString();
           const end = new Date(endDate).toLocaleDateString();
-          const year = new Date(endDate).getFullYear();
-          const previousYear =
-            index > 0 ? new Date(past[index - 1].endDate).getFullYear() : null;
 
           return (
-            <div>
-              {previousYear !== year && <h2>{year}</h2>}
-              <Card key={id} className="trips-trip">
+            <Card key={id} className="trips-trip">
+              <CardBody>
+                <CardTitle tag="h2">{title}</CardTitle>
+                <CardSubtitle className="mb-2 text-muted" tag="h6">
+                  <i>{`${start} to ${end}`}</i>
+                </CardSubtitle>
                 <CardBody>
-                  <CardTitle tag="h2">{title}</CardTitle>
-                  <CardSubtitle className="mb-2 text-muted" tag="h6">
-                    <i>{`${start} to ${end}`}</i>
-                  </CardSubtitle>
-                  <CardBody>
-                    {galleryLink && (
-                      <NavLink active href={galleryLink}>
-                        Gallery Link
-                      </NavLink>
-                    )}
-                  </CardBody>
-                  {signatures?.length ? (
-                    <AvatarGroup total={signatures.length}>
-                      {signatures.slice(0, 3).map(({ UserUsername }) => (
-                        <Avatar
-                          key={UserUsername}
-                          alt="member"
-                          src={`https://profiles.csh.rit.edu/image/${
-                            UserUsername ?? ''
-                          }`}
-                        />
-                      ))}
-                    </AvatarGroup>
-                  ) : (
-                    <p>No one signed the guestbook :(</p>
+                  {galleryLink && (
+                    <NavLink active href={galleryLink}>
+                      Gallery Link
+                    </NavLink>
                   )}
                 </CardBody>
-              </Card>
-            </div>
+                {signatures?.length ? (
+                  <AvatarGroup total={signatures.length}>
+                    {signatures.slice(0, 3).map(({ UserUsername }) => (
+                      <Avatar
+                        key={UserUsername}
+                        alt="member"
+                        src={`https://profiles.csh.rit.edu/image/${
+                          UserUsername ?? ''
+                        }`}
+                      />
+                    ))}
+                  </AvatarGroup>
+                ) : (
+                  <p>No one signed the guestbook :(</p>
+                )}
+              </CardBody>
+            </Card>
           );
         })}
       </div>

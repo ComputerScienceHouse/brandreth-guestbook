@@ -1,0 +1,448 @@
+[
+  {
+    "username": "andyp",
+    "name": "Andrew Potter",
+    "role": "POTTER_STEWARD"
+  },
+  {
+    "username": "RYAN_GLOSSOP",
+    "name": "Ryan Glossop",
+    "isMember": false
+  },
+  {
+    "username": "kukester",
+    "name": "Bill Kuker"
+  },
+  {
+    "username": "jtaglic",
+    "name": "Jeffery Taglic"
+  },
+  {
+    "username": "mlynch",
+    "name": "Michael Lynch"
+  },
+  {
+    "username": "soup",
+    "name": "Matt Campbell"
+  },
+  {
+    "username": "ram",
+    "name": "Ram Zallan"
+  },
+  {
+    "username": "sherrardtr",
+    "name": "Trevor Sherrard"
+  },
+  {
+    "username": "ZACHARY_HAIL",
+    "name": "Zachary Hail",
+    "isMember": false
+  },
+  {
+    "username": "jmf",
+    "name": "James Forcier"
+  },
+  {
+    "username": "eero",
+    "name": "Eero Kelly"
+  },
+  {
+    "username": "zoozle",
+    "name": "Zachery Williams"
+  },
+  {
+    "username": "carnivorousmoss",
+    "name": "Brenton Cousins"
+  },
+  {
+    "username": "crigney",
+    "name": "Corey Rigney"
+  },
+  {
+    "username": "agoel",
+    "name": "Ayush Goel"
+  },
+  {
+    "username": "edflo",
+    "name": "Edward Ro"
+  },
+  {
+    "username": "wapooshe",
+    "name": "Young Park"
+  },
+  {
+    "username": "hellofromrachel",
+    "name": "Rachel Jacob"
+  },
+  {
+    "username": "josephbgerber",
+    "name": "Joseph Gerber"
+  },
+  {
+    "username": "ED_BRYDALSKI",
+    "name": "Ed Brydalski",
+    "isMember": false
+  },
+  {
+    "username": "greendayandcats",
+    "name": "Alex Olesky"
+  },
+  {
+    "username": "grace",
+    "name": "Grace Lombardi"
+  },
+  {
+    "username": "niconcussions",
+    "name": "Nico DiAlasandro"
+  },
+  {
+    "username": "harmon",
+    "name": "Harmon Herring"
+  },
+  {
+    "username": "zoe",
+    "name": "Zoe James"
+  },
+  {
+    "username": "nina",
+    "name": "Nina Rei"
+  },
+  {
+    "username": "egg",
+    "name": "Andrew Eggleston"
+  },
+  {
+    "username": "red",
+    "name": "Fred Rybin"
+  },
+  {
+    "username": "mfrancis",
+    "name": "Michael Francis"
+  },
+  {
+    "username": "maniacalcat",
+    "name": "Bonney"
+  },
+  {
+    "username": "river",
+    "name": "River Marks"
+  },
+  {
+    "username": "PARKER_BERGEN",
+    "name": "Parker Bergen",
+    "isMember": false
+  },
+  {
+    "username": "ptheflor",
+    "name": "Peter Flores"
+  },
+  {
+    "username": "geo",
+    "name": "Geoffrey Moss"
+  },
+  {
+    "username": "coryinthehouse",
+    "name": "Cori Mori"
+  },
+  {
+    "username": "mattyb",
+    "name": "Matthew Breidenbach"
+  },
+  {
+    "username": "dante",
+    "name": "Nicholas Mercadante"
+  },
+  {
+    "username": "gustin",
+    "name": "Justin Gonzales"
+  },
+  {
+    "username": "MIKOS_PANAGOUKUS",
+    "name": "Mikos Panagoukus",
+    "isMember": false
+  },
+  {
+    "username": "jsultan",
+    "name": "Juasheem Sultan"
+  },
+  {
+    "username": "emauz",
+    "name": "Eric Moss"
+  },
+  {
+    "username": "WILL_KRACKE",
+    "name": "Will Kracke",
+    "isMember": false
+  },
+  {
+    "username": "JACQUELYN_LEUNG",
+    "name": "Jacquelyn Leung",
+    "isMember": false
+  },
+  {
+    "username": "scarecrow",
+    "name": "Nikolas Zahorian"
+  },
+  {
+    "username": "freemcgee33",
+    "name": "Ryan McGee"
+  },
+  {
+    "username": "dooley",
+    "name": "Evelyn Dooley"
+  },
+  {
+    "username": "alli",
+    "name": "Allison Wright"
+  },
+  {
+    "username": "jackzachson",
+    "name": "Skyler Jackson"
+  },
+  {
+    "username": "ELIZABETH_MATTHEWS",
+    "name": "Elizabeth Matthews",
+    "isMember": false
+  },
+  {
+    "username": "ender",
+    "name": "Dylan Jackson"
+  },
+  {
+    "username": "JOSH_KELLY",
+    "name": "Josh Kelly",
+    "isMember": false
+  },
+  {
+    "username": "tylerd",
+    "name": "Tyler Domanski"
+  },
+  {
+    "username": "olivia",
+    "name": "Olivia Brazak"
+  },
+  {
+    "username": "vivian",
+    "name": "Vivian Nowka-Keane"
+  },
+  {
+    "username": "jdegrand",
+    "name": "Joe DeGrand"
+  },
+  {
+    "username": "smirabito",
+    "name": "Steven Mirabito"
+  },
+  {
+    "username": "dgiaime",
+    "name": "Dan Giaime"
+  },
+  {
+    "username": "ahudak",
+    "name": "Angela Hudak"
+  },
+  {
+    "username": "nicwithac",
+    "name": "Nicolas Lande"
+  },
+  {
+    "username": "c2",
+    "name": "Matthew Sze-Tu"
+  },
+  {
+    "username": "wgahnagl",
+    "name": "Skyler Clark"
+  },
+  {
+    "username": "cjackson",
+    "name": "Connor Jackson"
+  },
+  {
+    "username": "zilla",
+    "name": "Spencer Mycek"
+  },
+  {
+    "username": "skyguysciguy",
+    "name": "Schuyler Martin"
+  },
+  {
+    "username": "jbrosler",
+    "name": "Jacob Brosler"
+  },
+  {
+    "username": "SEAN_MCATEER",
+    "name": "Sean McAteer",
+    "isMember": false
+  },
+  {
+    "username": "matted",
+    "name": "Devin Matté"
+  },
+  {
+    "username": "jimdaguy",
+    "name": "Jimmy DiGrazia"
+  },
+  {
+    "username": "sauriol",
+    "name": "Jack Sauriol"
+  },
+  {
+    "username": "tino",
+    "name": "Matt Martino"
+  },
+  {
+    "username": "saucetray",
+    "name": "Justin Sostre"
+  },
+  {
+    "username": "zackyenchik",
+    "name": "Zack Yenchik"
+  },
+  {
+    "username": "UNKNOWN_1",
+    "name": "UNKNOWN_1",
+    "isMember": false
+  },
+  {
+    "username": "freeze",
+    "name": "Koral Fries"
+  },
+  {
+    "username": "torirossini",
+    "name": "Tori Rossini"
+  },
+  {
+    "username": "squables",
+    "name": "Collin Tod"
+  },
+  {
+    "username": "berry",
+    "name": "Kaitlin Berryman"
+  },
+  {
+    "username": "jonah",
+    "name": "Jonah Fritz"
+  },
+  {
+    "username": "rbuzzell",
+    "name": "Ryan Buzzell"
+  },
+  {
+    "username": "nickm",
+    "name": "Nick Mosher"
+  },
+  {
+    "username": "bencentra",
+    "name": "Ben Centra"
+  },
+  {
+    "username": "joel",
+    "name": "Joel Eager"
+  },
+  {
+    "username": "marcb",
+    "name": "Marc Barclay"
+  },
+  {
+    "username": "purple",
+    "name": "Stephen Greene"
+  },
+  {
+    "username": "ROBIN_MOSHER",
+    "name": "Robin Mosher",
+    "isMember": false
+  },
+  {
+    "username": "ehouse",
+    "name": "Evelyn House"
+  },
+  {
+    "username": "cohoe",
+    "name": "Grant Cohoe"
+  },
+  {
+    "username": "gillian",
+    "name": "Gillian Galle"
+  },
+  {
+    "username": "ttanatb",
+    "name": "Tanat Boozayaangool"
+  },
+  {
+    "username": "benrr101",
+    "name": "Benjamin Russell"
+  },
+  {
+    "username": "straviaz",
+    "name": "Joy Sangsrichan"
+  },
+  {
+    "username": "bgrawi",
+    "name": "Ben Grawi"
+  },
+  {
+    "username": "demos",
+    "name": "Stephen Demos"
+  },
+  {
+    "username": "robgssp",
+    "name": "Robert Glossop"
+  },
+  {
+    "username": "swanboy",
+    "name": "Michael Swan"
+  },
+  {
+    "username": "nadman",
+    "name": "Dan Lee"
+  },
+  {
+    "username": "ajeddeloh",
+    "name": "Andrew Jeddeloh"
+  },
+  {
+    "username": "firstaid",
+    "name": "Aidan Brown"
+  },
+  {
+    "username": "yamsager",
+    "name": "Sam Yager"
+  },
+  {
+    "username": "zach",
+    "name": "Zach Hart"
+  },
+  {
+    "username": "dyllonrc",
+    "name": "Dyllon Chowdhury"
+  },
+  {
+    "username": "wilnil",
+    "name": "Willard Nilges"
+  },
+  {
+    "username": "wasv",
+    "name": "Bailey Stevens"
+  },
+  {
+    "username": "chase",
+    "name": "Chase Berry"
+  },
+  {
+    "username": "KIMBERLY_WIGGINS",
+    "name": "Kimberly Wiggins",
+    "isMember": false
+  },
+  {
+    "username": "roxy",
+    "name": "Roxanna Meskell"
+  },
+  {
+    "username": "hitchhacker",
+    "name": "Kenny Kim"
+  },
+  {
+    "username": "ryansb",
+    "name": "Ryan S Brown"
+  }
+]
