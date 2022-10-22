@@ -9,9 +9,14 @@ import {
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import Profile from './Profile';
+import useUser from '../../hooks/useUser';
+import { Role } from '../../api/user.api';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { user } = useUser();
+
+  const isAdmin = user?.role === Role.POTTER_STEWARD;
 
   return (
     <Navbar color="primary" dark expand="lg" fixed="top">
@@ -32,6 +37,13 @@ const NavBar = () => {
                 Trips
               </NavLink>
             </NavItem>
+            {isAdmin && (
+              <NavItem>
+                <NavLink to="/add-trip" className="nav-link">
+                  Add Trip
+                </NavLink>
+              </NavItem>
+            )}
           </Nav>
           <Nav navbar className="ml-auto">
             <Profile />

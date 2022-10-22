@@ -21,6 +21,8 @@ module.exports = {
     'linebreak-style': 0,
     'global-require': 0,
     'eslint linebreak-style': [0, 'error', 'windows'],
-    'no-console': 2
+    'no-console': 2,
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
   }
 }

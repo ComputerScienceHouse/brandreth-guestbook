@@ -46,7 +46,8 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, '/dist')
+    path: path.join(__dirname, '/dist'),
+    filename: 'index.bundle.js',
   },
   performance: {
     hints: false,
@@ -55,10 +56,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      favicon: './public/favicon.ico',
-      inject: false,
       name: 'index.html',
-      template: './public/index.html'
+      favicon: './public/favicon.ico',
+      template: './public/index.html',
+      inject: false,
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env)

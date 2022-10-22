@@ -1,6 +1,6 @@
 interface RequestObject {
   route: string;
-  body?: JSON;
+  body?: string;
 }
 
 // TODO: Get types that can return
@@ -14,7 +14,7 @@ const requestBuilder =
         headers: {
           'Content-Type': 'application/json',
         },
-        ...(body && { body: JSON.stringify(body) }),
+        ...(body && { body }),
       }
     );
 

@@ -1,4 +1,4 @@
-import { Get } from '.';
+import { Get, Post } from '.';
 
 export interface Signature {
   startDate: string;
@@ -16,6 +16,13 @@ export interface Trip {
   signatures?: Signature[];
 }
 
+export interface TripInput {
+  title: string;
+  startDate: string;
+  endDate: string;
+  galleryLink?: string;
+}
+
 export interface TripsData {
   current: Trip;
   upcoming: Trip[];
@@ -23,7 +30,17 @@ export interface TripsData {
 }
 
 export async function getTrips(): Promise<TripsData> {
-  const trips = (await Get({ route: '/trip' })) as unknown as TripsData;
+  return (await Get({
+    route: '/trip',
+  })) as unknown as TripsData;
+}
 
-  return trips;
+export async function createTrip(
+  trip: TripInput,
+  member?: string
+): Promise<Trip> {
+  return (await Post({
+    route: '/trip',
+    body: JSON.stringify({ trip, member }),
+  })) as unknown as Trip;
 }

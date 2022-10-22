@@ -13,7 +13,13 @@ export interface User {
 }
 
 export async function getUsers(): Promise<User[]> {
-  const users = (await Get({ route: '/user' })) as unknown as User[];
+  return (await Get({
+    route: '/user',
+  })) as unknown as User[];
+}
 
-  return users;
+export async function getUser(username: string): Promise<User> {
+  return (await Get({
+    route: `/user/${username}`,
+  })) as unknown as User;
 }
